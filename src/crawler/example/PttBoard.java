@@ -35,7 +35,7 @@ class PttBoard {
     	// >>>Fill here<<< 
         String prevPage =
             CrawlerPack.start()
-                .addCookie("","")                		// 八卦版進入需要設定cookie
+                .addCookie("over 18","1")                		// 八卦版進入需要設定cookie
                 .getFromHtml(pttMainPage)            	// 遠端資料格式為 HTML
                 .select("")  							// 取得右上角『前一頁』的內容
                 .get(1).attr("href")
@@ -54,7 +54,7 @@ class PttBoard {
             
             Elements links =
                 CrawlerPack.start()
-                    .addCookie("", "")		// 八卦版進入需要設定cookie >>>Fill here<<< 
+                    .addCookie("over18", "1")		// 八卦版進入需要設定cookie >>>Fill here<<< 
                     .getFromHtml(currPage)
                     .select("");			// 取得文章的<a> tag >>>Fill here<<< 
 

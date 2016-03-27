@@ -32,12 +32,26 @@
         // Load GeoJSON.
         map.data.loadGeoJson(
         	// 可輸入資料網址 或直接 輸入 GeoJson
-        	"http://128.199.204.20/pm25/geojson.php"
+        	"http://www.geologycloud.tw/data/zh-tw/liquefaction?area=%E8%87%BA%E5%8C%97&classify=%E4%BD%8E%E6%BD%9B%E5%8B%A2&all=true"
         	
         	// 找出土壤液化的資料源
         );
-        
-        
+        var heatmapData = [];
+        for (var i = 0; i < results.features.length; i++) {
+          var coords = results.features[i].geometry.coordinates;
+          var latLng = new google.maps.LatLng(coords[1], coords[0]);
+          heatmapData.push(latLng);
+        }
+        var heatmap = new google.maps.visualization.HeatmapLayer({
+          data: heatmapData,
+          dissipating: false,
+          map: map
+        });
+      }
+        map.data.loadGeoJson(
+            	// 可輸入資料網址 或直接 輸入 GeoJson
+            "http://www.geologycloud.tw/data/zh-tw/liquefaction?area=%E8%87%BA%E5%8C%97&classify=%E9%AB%98%E6%BD%9B%E5%8B%A2&all=true"
+        );
       }
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?callback=initMap">

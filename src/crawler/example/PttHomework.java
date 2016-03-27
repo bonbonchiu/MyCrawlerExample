@@ -14,14 +14,14 @@ import com.github.abola.crawler.CrawlerPack;
 public class PttHomework {
 	
 	public static void main(String[] args) {
-		String uri = "https://www.ptt.cc/bbs/Gossiping/M.1458547807.A.32A.html";
+		String uri = "https://www.ptt.cc/bbs/Gossiping/M.1459045007.A.0E5.html";
 		
 
 		System.out.println( 
 			CrawlerPack.start()
 			    .addCookie("over18", "1")
 				.getFromHtml(uri)
-				.select("") // 如何取得按推的id ? >>>Fill here<<< 
+				.select("span.push-tag:contains(推)+span.push-userid+.push-content") // 如何取得按推的id ? >>>Fill here<<< 
 
 				.toString()
 		);
